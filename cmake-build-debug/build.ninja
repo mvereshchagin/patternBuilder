@@ -55,11 +55,11 @@ build CMakeFiles/createPatternsBuilder.dir/main.cpp.o: CXX_COMPILER__createPatte
   OBJECT_DIR = CMakeFiles/createPatternsBuilder.dir
   OBJECT_FILE_DIR = CMakeFiles/createPatternsBuilder.dir
 
-build CMakeFiles/createPatternsBuilder.dir/PlotBuilder.cpp.o: CXX_COMPILER__createPatternsBuilder_unscanned_Debug /mnt/data/Misha/Projects/cpp/createPatternsBuilder/PlotBuilder.cpp || cmake_object_order_depends_target_createPatternsBuilder
-  DEP_FILE = CMakeFiles/createPatternsBuilder.dir/PlotBuilder.cpp.o.d
+build CMakeFiles/createPatternsBuilder.dir/src/PlotBuilder.cpp.o: CXX_COMPILER__createPatternsBuilder_unscanned_Debug /mnt/data/Misha/Projects/cpp/createPatternsBuilder/src/PlotBuilder.cpp || cmake_object_order_depends_target_createPatternsBuilder
+  DEP_FILE = CMakeFiles/createPatternsBuilder.dir/src/PlotBuilder.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/createPatternsBuilder.dir
-  OBJECT_FILE_DIR = CMakeFiles/createPatternsBuilder.dir
+  OBJECT_FILE_DIR = CMakeFiles/createPatternsBuilder.dir/src
 
 
 # =============================================================================
@@ -69,7 +69,7 @@ build CMakeFiles/createPatternsBuilder.dir/PlotBuilder.cpp.o: CXX_COMPILER__crea
 #############################################
 # Link the executable createPatternsBuilder
 
-build createPatternsBuilder: CXX_EXECUTABLE_LINKER__createPatternsBuilder_Debug CMakeFiles/createPatternsBuilder.dir/main.cpp.o CMakeFiles/createPatternsBuilder.dir/PlotBuilder.cpp.o
+build createPatternsBuilder: CXX_EXECUTABLE_LINKER__createPatternsBuilder_Debug CMakeFiles/createPatternsBuilder.dir/main.cpp.o CMakeFiles/createPatternsBuilder.dir/src/PlotBuilder.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/createPatternsBuilder.dir
   POST_BUILD = :

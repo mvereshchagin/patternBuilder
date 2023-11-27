@@ -9,71 +9,90 @@
 #include <optional>
 #include <string>
 
-struct Annotation;
-struct VerticalLine;
-struct HorizonalLine;
-struct LineParam;
-struct PlotData;
-
-
-class PlotBuilder {
-public:
-    PlotBuilder& addPlot(double* x, double* y,
-                 std::optional<std::string> label = std::nullopt,
-                 std::optional<LineParam> lineParam = std::nullopt);
-    PlotBuilder&  addHorizontalLine(double y,
-                           std::optional<double> xMin = std::nullopt,
-                           std::optional<double> xMax = std::nullopt,
-                           std::optional<LineParam> lineParam = std::nullopt);
-    PlotBuilder& addVerticalLine(double x,
-                         std::optional<double> yMin = std::nullopt,
-                         std::optional<double> yMax = std::nullopt,
-                         std::optional<LineParam> lineParam = std::nullopt);
-    PlotBuilder& addAnnotation(double x, double y, const std::string& text);
-    std::string Build();
-private:
-    std::vector<std::reference_wrapper<PlotData>> mPlotDatas;
-    std::vector<std::reference_wrapper<HorizonalLine>> mHorizontalLines;
-    std::vector<std::reference_wrapper<VerticalLine>> mVerticalLines;
-    std::vector<std::reference_wrapper<Annotation>> mAnotations;
-};
 
 struct Annotation {
 public:
+    explicit Annotation(double x, double y, const std::string& text);
+
+
     double X;
     double Y;
     std::string Text;
 };
 
-struct LineParam {
+struct LineParams {
 public:
-    std::string Color;
-    std::string Style;
-    std::string Weight;
+    explicit LineParams(std::optional<std::string> color = std::nullopt,
+                        std::optional<std::string> style = std::nullopt,
+                        std::optional<std::string> weight = std::nullopt);
+    LineParams(const LineParams&) = default;
+
+
+
+    std::optional<std::string> Color;
+    std::optional<std::string> Style;
+    std::optional<std::string> Weight;
 };
 
 struct VerticalLine {
 public:
+    explicit VerticalLine(double x,
+                 std::optional<double> yMin = std::nullopt,
+                 std::optional<double> yMax = std::nullopt,
+                 std::optional<LineParams> lineParamsData = std::nullopt);
+
     double X;
-    std::optional<double> yMin;
-    std::optional<double> yMax;
-    std::optional<LineParam> LineParam;
+    std::optional<double> YMin;
+    std::optional<double> YMax;
+    std::optional<LineParams> LineParamsData;
 };
 
-struct HorizonalLine {
+struct HorizontalLine {
 public:
+    explicit HorizontalLine(double y,
+                            std::optional<double> xMin = std::nullopt,
+                            std::optional<double> xMax = std::nullopt,
+                            std::optional<LineParams> lineParamsData = std::nullopt);
+
     double Y;
-    std::optional<double> xMin;
-    std::optional<double> xMax;
-    std::optional<LineParam> LineParam;
+    std::optional<double> XMin;
+    std::optional<double> XMax;
+    std::optional<LineParams> LineParamsData;
 };
 
 struct PlotData {
 public:
-    double* X;
-    double* Y;
+    explicit PlotData(const std::vector<double>& x, const std::vector<double>& y,
+                      std::optional<std::string> label = std::nullopt,
+                      std::optional<LineParams> lineParamsData = std:: nullopt);
+
+    std::vector<double> X;
+    std::vector<double> Y;
     std::optional<std::string> Label;
-    std::optional<LineParam> LineParam;
+    std::optional<LineParams> LineParamsData;
 };
+
+class PlotBuilder {
+public:
+    PlotBuilder& addPlot(const std::vector<double>& x, const std::vector<double>& y,
+                         std::optional<std::string> label = std::nullopt,
+                         std::optional<LineParams> lineParamsData = std::nullopt);
+    PlotBuilder&  addHorizontalLine(double y,
+                                    std::optional<double> xMin = std::nullopt,
+                                    std::optional<double> xMax = std::nullopt,
+                                    std::optional<LineParams> lineParamsData = std::nullopt);
+    PlotBuilder& addVerticalLine(double x,
+                                 std::optional<double> yMin = std::nullopt,
+                                 std::optional<double> yMax = std::nullopt,
+                                 std::optional<LineParams> lineParamsData = std::nullopt);
+    PlotBuilder& addAnnotation(double x, double y, const std::string& text);
+    std::string Build();
+private:
+    std::vector<PlotData> mPlotDataVector{};
+    std::vector<HorizontalLine> mHorizontalLines{};
+    std::vector<VerticalLine> mVerticalLines{};
+    std::vector<Annotation> mAnnotations{};
+};
+
 
 #endif //CREATEPATTERNSBUILDER_PLOTBUILDER_H

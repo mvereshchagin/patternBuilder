@@ -1,4 +1,12 @@
 /mnt/data/bin/clion-2021.2.2/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/mnt/data/bin/clion-2021.2.2/bin/ninja/linux/x64/ninja -G Ninja -S /mnt/data/Misha/Projects/cpp/createPatternsBuilder -B /mnt/data/Misha/Projects/cpp/createPatternsBuilder/cmake-build-debug
--- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /mnt/data/Misha/Projects/cpp/createPatternsBuilder/cmake-build-debug
+CMake Error at /mnt/data/bin/clion-2021.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+  Could NOT find Python3 (missing: Python3_NumPy_INCLUDE_DIRS NumPy) (found
+  version "3.12.0")
+Call Stack (most recent call first):
+  /mnt/data/bin/clion-2021.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake:600 (_FPHSA_FAILURE_MESSAGE)
+  /mnt/data/bin/clion-2021.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/FindPython/Support.cmake:3766 (find_package_handle_standard_args)
+  /mnt/data/bin/clion-2021.2.2/bin/cmake/linux/x64/share/cmake-3.26/Modules/FindPython3.cmake:551 (include)
+  CMakeLists.txt:17 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
