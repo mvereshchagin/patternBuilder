@@ -7,11 +7,8 @@ int main() {
 
     PlotBuilder builder;
 
-    std::vector<double> x = {2.5, 6.5, 4.5};
-    std::vector<double> y = {2.5, 6.5, 4.5};
-
     builder
-        .addPlot(x, y, "function1")
+        .addPlot({2.5, 6.5, 4.5}, {2.5, 6.5, 4.5}, "function1")
         .addHorizontalLine(3.8)
         .addVerticalLine(8.9);
 
